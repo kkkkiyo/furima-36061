@@ -42,11 +42,11 @@
 |Column                    | Type       | Options           |
 |--------------------------|----------- |------------------|
 | user                     | references | foreign_key: true |
-| items                    | references | foreign_key: true |
+| item                     | references | foreign_key: true |
 
 ### Association
 
-- has_one : shipping_infomation
+- has_one :shipping_infomation
 - belongs_to :user
 - belongs_to :item
 
@@ -60,9 +60,9 @@
 | address                  | string     | null: false       |
 | building                 | string     |                   |
 | phone-number             | string     | null: false       |
-| purchase_records         | references | foreign_key: true |
+| purchase_record          | references | foreign_key: true |
 
 ### Association
 
-- belongs_to : purchase_records
+- belongs_to : purchase_record
 
