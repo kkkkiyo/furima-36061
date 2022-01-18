@@ -2,61 +2,66 @@
 
 ## users table 
 
-| Column                | Type                | Options                 |
-|-----------------------|---------------------|-------------------------|
-| nickname              | string              | null: false             |
-| email                 | string              | null: false             |
-| password              | string              | null: false             |
-| password-confirmation | string              | null: false             |
-| last-name             | string              | null: false             |
-| first-name            | string              | null: false             |
+| Column                | Type                | Options                   |
+|-----------------------|---------------------|---------------------------|
+| nickname              | string              | null: false               |
+| email                 | string              | null: false, unique: true |
+| encrypted_password    | string              | null: false               |
+| last_name             | string              | null: false               |
+| first_name            | string              | null: false               |
+| last-name-kana        | string              | null: false               |
+| first-name-kana       | string              | null: false               |
+| user_birth_date       | date                | null: false               |
 
 ### Association
 
 * has_many :items
+* has_many :shipping infomation
+
 
 ## items table
 
 |Column                    |Type        |Options           |
 |--------------------------|------------|------------------|
-| item-name                | string     | null: false       |
-| item-info                | text       | null: false       |
-| item-category            | string     | null: false       |
-| item-sales-status        | string     | null: false       |
-| item-shipping-fee-status | string     | null: false       |
-| item-prefecture          | string     | null: false       |
-| item-scheduled-delivery  | string     | null: false       |
-| item-price               | string     | null: false       |
-| user_id                  | references | foreign_key: true |
+| name                     | string     | null: false       |
+| info                     | text       | null: false       |
+| category_id              | integer    | null: false       |
+| sales_status_id          | integer    | null: false       |
+| shipping_fee_status_id   | integer    | null: false       |
+| prefecture_id            | integer    | null: false       |
+| scheduled-delivery_id    | integer    | null: false       |
+| price                    | integer    | null: false       |
+| user                     | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :users
+* has_one :Purchase record
 
 ## Purchase record table
 
 |Column                    |Type      |Options           |
-|--------------------------|--------  |------------------|
-| user                     |string    |null: false       |
-| items_id                 |string    |null: false       |
+|--------------------------|----------- |------------------|
+| user                     | references | foreign_key: true |
+| items                    | references | foreign_key: true |
 
 ### Association
 
 - has_one : shipping infomation
+* has_many :users,items
 
 ## shipping infomation table
 
 |Column                    |Type      |Options           |
 |--------------------------|--------  |------------------|
-| postal-code              |string    |null: false       |
+| postal_code              |string    |null: false       |
 | prefectures              |text      |null: false       |
-| city                     |string    |null: false       |
+| prefecture_id            |string    |null: false       |
 | address                  |string    |null: false       |
-| item-shipping-fee-status |string    |null: false       |
-| building                 |string    |null: false       |
+| building                 |string    |                  |
 | phone-number             |string    |null: false       |
 
 ### Association
 
-- belongs_to : Purchase record
+- belongs_to : purchase record
 
