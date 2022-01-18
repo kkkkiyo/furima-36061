@@ -9,15 +9,14 @@
 | encrypted_password    | string              | null: false               |
 | last_name             | string              | null: false               |
 | first_name            | string              | null: false               |
-| last-name-kana        | string              | null: false               |
-| first-name-kana       | string              | null: false               |
+| last_name_kana        | string              | null: false               |
+| first_name_kana       | string              | null: false               |
 | user_birth_date       | date                | null: false               |
 
 ### Association
 
 * has_many :items
-* has_many :shipping infomation
-
+* has_many :purchase_record
 
 ## items table
 
@@ -35,10 +34,10 @@
 
 ### Association
 
-- belongs_to :users
-* has_one :Purchase record
+- belongs_to :user
+* has_one :Purchase_record
 
-## Purchase record table
+## Purchase_record table
 
 |Column                    |Type      |Options           |
 |--------------------------|----------- |------------------|
@@ -48,20 +47,22 @@
 ### Association
 
 - has_one : shipping infomation
-* has_many :users,items
+* has_many :users
+* has_many :items
 
-## shipping infomation table
+## shipping_infomation table
 
-|Column                    |Type      |Options           |
-|--------------------------|--------  |------------------|
-| postal_code              |string    |null: false       |
-| prefectures              |text      |null: false       |
-| prefecture_id            |string    |null: false       |
-| address                  |string    |null: false       |
-| building                 |string    |                  |
-| phone-number             |string    |null: false       |
+|Column                    |Type        |Options            |
+|--------------------------|------------|-------------------|
+| postal_code              | string     | null: false       |
+| prefectures              | string     | null: false       |
+| prefecture_id            | string     | null: false       |
+| address                  | string     | null: false       |
+| building                 | string     |                   |
+| phone-number             | string     | null: false       |
+| user                     | references | foreign_key: true |
 
 ### Association
 
-- belongs_to : purchase record
+- belongs_to : purchase_record
 
