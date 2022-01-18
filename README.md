@@ -37,20 +37,20 @@
 - belongs_to :user
 * has_one :Purchase_record
 
-## Purchase_record table
+## purchase_records table
 
-|Column                    |Type      |Options           |
+|Column                    | Type       | Options           |
 |--------------------------|----------- |------------------|
 | user                     | references | foreign_key: true |
 | items                    | references | foreign_key: true |
 
 ### Association
 
-- has_one : shipping infomation
-* has_many :users
-* has_many :items
+- has_one : shipping_infomation
+- belongs_to :user
+- belongs_to :item
 
-## shipping_infomation table
+## shipping_infomations table
 
 |Column                    |Type        |Options            |
 |--------------------------|------------|-------------------|
@@ -60,9 +60,9 @@
 | address                  | string     | null: false       |
 | building                 | string     |                   |
 | phone-number             | string     | null: false       |
-| user                     | references | foreign_key: true |
+| purchase_records         | references | foreign_key: true |
 
 ### Association
 
-- belongs_to : purchase_record
+- belongs_to : purchase_records
 
