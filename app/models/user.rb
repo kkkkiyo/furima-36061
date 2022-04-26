@@ -13,4 +13,6 @@ class User < ApplicationRecord
               format: { with: /\A[ァ-ヶー]+\z/, message: 'is invalid. Input full-width katakana characters.' }
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'is invalid. Input half-width characters.' }
   end
+
+  has_many :item
 end

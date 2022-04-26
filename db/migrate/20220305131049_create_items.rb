@@ -3,12 +3,12 @@ class CreateItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
       t.text :item_name
       t.text :item_info
-      t.string :item_category
-      t.string :item_sales_status
-      t.string :item_shipping_fee_statu
-      t.string :item_prefecture
-      t.string :item_scheduled_delivery
-      t.integer :item_price
+      t.integer :category_id
+      t.integer :sales_status_id
+      t.integer :shipping_fee_status_id
+      t.integer :prefecture_id
+      t.integer :scheduled_delivery_id
+      t.integer :price
       t.timestamps
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_115208) do
+ActiveRecord::Schema.define(version: 2022_03_09_124122) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,15 +33,23 @@ ActiveRecord::Schema.define(version: 2022_03_09_115208) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "text", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "item_name"
     t.text "item_info"
-    t.string "item_category"
-    t.string "item_sales_status"
-    t.string "item_shipping_fee_statu"
-    t.string "item_prefecture"
-    t.string "item_scheduled_delivery"
-    t.integer "item_price"
+    t.integer "category_id"
+    t.integer "sales_status_id"
+    t.integer "shipping_fee_status_id"
+    t.integer "prefecture_id"
+    t.integer "scheduled_delivery_id"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
