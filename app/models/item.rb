@@ -5,10 +5,10 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :item_info, presence: true
-  validates :item_sales_status, presence: true  
-  validates :item_shipping_fee_status, presence: true 
-  validates :item_category, presence: true
-  validates :item_prefecture ,presence: true
-  validates :item_scheduled_delivery, presence: true
-  validates :item_price, presence: true
+  validates :category_id, presence: true  
+  validates :sales_status_id, presence: true 
+  validates :shipping_fee_status_id, presence: true
+  validates :prefecture_id, presence: true
+  validates :scheduled_delivery_id ,presence: true
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999};
 end
