@@ -31,11 +31,23 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
+      
+      it 'item_categoryで「---」が選択されている場合は出品できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
 
       it 'item-sales-statusが空では登録はできない' do
         @item.sales_status_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status can't be blank")
+      end
+
+      it 'item-sales-statusで「---」が選択されている場合は出品できない' do
+        @item.sales_status_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Sales status must be other than 1")
       end
 
       it 'item-shipping-fee-statusが空では登録はできない' do
@@ -44,10 +56,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
       end
 
-      it 'prefecture_idが空では登録はできない' do
-        @item.prefecture_id = ''
+      it 'item-shipping-fee-statusで「---」が選択されている場合は出品できない' do
+        @item.shipping_fee_status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping fee status must be other than 1")
       end
 
       it 'prefecture_idが空では登録はできない' do
@@ -55,11 +67,23 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
+
+      it 'prefecture_idで「---」が選択されている場合は出品できない' do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+      end
     
       it 'scheduled_delivery_idが空では登録はできない' do
         @item.scheduled_delivery_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
+      end
+
+      it 'scheduled_delivery_idが選択されている場合は出品できない' do
+        @item.scheduled_delivery_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduled delivery must be other than 1")
       end
 
       it 'priceが空では登録はできない' do
@@ -79,6 +103,25 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
+
+      it 'priceは¥300以下では保存できない' do
+        @item.price = '200'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+
+      it 'priceは¥9,999,999以上では保存できない' do
+        @item.price = '99999999'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      
+      it 'userが紐付いていなければ、出品できない' do
+        @item.user_id = 'nil'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
     end
   end
 end
