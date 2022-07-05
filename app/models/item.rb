@@ -4,9 +4,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :shipping_fee_status
   belongs_to :category
-  belongs_to :status
   belongs_to :prefecture
-  belongs_to :scheduled
   belongs_to :sales_status
   belongs_to :scheduled_delivery
 
