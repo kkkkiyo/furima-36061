@@ -46,21 +46,21 @@
 
 ### Association
 
-- has_one :shipping_infomation
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
-## shipping_infomations table
+## address table
 
 |Column                    |Type        |Options            |
 |--------------------------|------------|-------------------|
 | postal_code              | string     | null: false       |
-| prefecture               | string     | null: false       |
+| prefecture_id            | string     | null: false       |
 | city                     | string     | null: false       |
 | address                  | string     | null: false       |
 | building                 | string     | null: false       |
 | phone-number             | string     | null: false       |
-| order_id                 | references | foreign_key: true |
+| order                    | references | foreign_key: true |
 
 ### Association
 
