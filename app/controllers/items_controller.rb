@@ -21,6 +21,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    if @order.present?
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
