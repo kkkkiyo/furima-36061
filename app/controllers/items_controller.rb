@@ -21,15 +21,19 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    if @order.present?
+    if user_signed_in? 
     else
       redirect_to root_path
     end
   end
 
   def edit
-    unless current_user == @item.user
+    unless @item.order.present?
+    else
       redirect_to root_path
+    end
+    unless current_user == @item.user
+    redirect_to root_path
   end
 end
 
