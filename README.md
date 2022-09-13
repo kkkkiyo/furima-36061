@@ -16,7 +16,7 @@
 ### Association
 
 * has_many :items
-* has_many :order
+* has_many :orders
 
 ## items table
 
@@ -37,7 +37,7 @@
 - belongs_to :user
 * has_one :order
 
-## order table
+## orders table
 
 |Column                    | Type       | Options           |
 |--------------------------|----------- |------------------|
@@ -50,7 +50,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## address table
+## addresses table
 
 |Column                    |Type        |Options            |
 |--------------------------|------------|-------------------|
@@ -58,7 +58,7 @@
 | prefecture_id            | string     | null: false       |
 | city                     | string     | null: false       |
 | address                  | string     | null: false       |
-| building                 | string     | null: false       |
+| building                 | string     |       |
 | phone-number             | string     | null: false       |
 | order                    | references | foreign_key: true |
 
