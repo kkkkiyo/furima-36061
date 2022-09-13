@@ -20,20 +20,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    if user_signed_in? 
-    else
-      redirect_to root_path
-    end
   end
 
   def edit
-    unless @item.order.present?
-    else
-      redirect_to root_path
-    end
-    unless current_user == @item.user
-    redirect_to root_path
+    if @item.order.present?
+      redirect_to action: :index
   end
 end
 
