@@ -16,7 +16,7 @@
 ### Association
 
 * has_many :items
-* has_many :purchase_record
+* has_many :orders
 
 ## items table
 
@@ -35,9 +35,9 @@
 ### Association
 
 - belongs_to :user
-* has_one :Purchase_record
+* has_one :order
 
-## purchase_records table
+## orders table
 
 |Column                    | Type       | Options           |
 |--------------------------|----------- |------------------|
@@ -46,23 +46,23 @@
 
 ### Association
 
-- has_one :shipping_infomation
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
-## shipping_infomations table
+## addresses table
 
 |Column                    |Type        |Options            |
 |--------------------------|------------|-------------------|
 | postal_code              | string     | null: false       |
-| prefectures              | string     | null: false       |
 | prefecture_id            | string     | null: false       |
+| city                     | string     | null: false       |
 | address                  | string     | null: false       |
-| building                 | string     |                   |
+| building                 | string     |       |
 | phone-number             | string     | null: false       |
-| purchase_record          | references | foreign_key: true |
+| order                    | references | foreign_key: true |
 
 ### Association
 
-- belongs_to : purchase_record
+- belongs_to : order
 
