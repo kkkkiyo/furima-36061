@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :sales_status
   belongs_to :scheduled_delivery
 
+  validates :image, presence: true
   validates :item_name, presence: true
   validates :item_info, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1 }
