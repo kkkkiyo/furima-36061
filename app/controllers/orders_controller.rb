@@ -5,11 +5,7 @@ class OrdersController < ApplicationController
   def index
     @order_address = OrderAddress.new
     
-    if current_user == @item.user
-      redirect_to root_path
-    end
-
-    if @item.order.present?
+    if @item.order.present? && current_user == @item.user
       redirect_to root_path
     end
   end
