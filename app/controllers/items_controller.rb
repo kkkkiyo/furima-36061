@@ -23,13 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user != @item.user
+    if @item.order.present? || current_user != @item.user
       redirect_to root_path
     end
-    if @item.order.present?
-      redirect_to action: :index
   end
-end
 
   def update
     if @item.update(item_params)
